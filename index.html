@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FOMO Food Lines</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  url('https://images.unsplash.com/photo-1606787366850-de6330128bfc') center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 700px;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #0b6e4f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* SECTIONS */
+section {
+  padding: 80px 10%;
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #0b6e4f;
+}
+
+/* ABOUT */
+.about p {
+  max-width: 800px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid #eee;
+  background: #fafafa;
+  border-radius: 10px;
+}
+
+/* SERVICES */
+.services .card {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* CONTACT */
+.contact form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+input, textarea {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ccc;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>FOMO FOOD LINES</h1>
+  <p>Global FMCG trading & distribution company delivering premium food brands across international markets.</p>
+  <a href="#contact" class="btn">Contact Us</a>
+</div>
+
+<!-- ABOUT -->
+<section class="about">
+  <h2>About Us</h2>
+  <p>
+    FOMO Food Lines is an international FMCG trading company specializing in branded food and beverage distribution.
+    We connect global producers with regional markets, ensuring fast, reliable and high-quality supply chains.
+  </p>
+</section>
+
+<!-- CATEGORIES -->
+<section>
+  <h2>Product Categories</h2>
+  <div class="grid">
+    <div class="card">Beverages</div>
+    <div class="card">Dairy Products</div>
+    <div class="card">Snacks & Confectionery</div>
+    <div class="card">Cooking Oils</div>
+    <div class="card">Frozen Foods</div>
+    <div class="card">Dry Goods</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <h2>Our Services</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Import / Export</h3>
+      <p>Global sourcing and international trade solutions.</p>
+    </div>
+    <div class="card">
+      <h3>Distribution</h3>
+      <p>Efficient FMCG distribution network across regions.</p>
+    </div>
+    <div class="card">
+      <h3>Wholesale Supply</h3>
+      <p>B2B supply chain for retail and foodservice sectors.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section>
+  <h2>Global Brands</h2>
+  <div class="grid">
+    <div class="card">Brand A</div>
+    <div class="card">Brand B</div>
+    <div class="card">Brand C</div>
+    <div class="card">Brand D</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+
+  <form>
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <textarea rows="5" placeholder="Your Message"></textarea>
+    <button class="btn" type="submit">Send</button>
+  </form>
+</section>
+
+<footer>
+  © 2026 FOMO Food Lines. All rights reserved.
+</footer>
+
+</body>
+</html>
