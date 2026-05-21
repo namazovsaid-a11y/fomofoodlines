@@ -1,161 +1,167 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Info, Package, Phone } from "lucide-react";
+import { motion } from "framer-motion";
+import { Info, Grid3X3, Phone, ShieldCheck, Truck, Headphones } from "lucide-react";
 
 export default function FomoFoodLanding() {
   const [activeTab, setActiveTab] = useState("home");
+  const [page, setPage] = useState(1);
 
   const brands = [
+    "Tableron",
     "Kinder",
-    "Nutella",
     "Nescafe",
     "Nespresso",
     "Haribo",
-    "Toblerone",
-    "Freego",
     "Lindt",
-    "Monster",
+    "Milka",
+    "Oreo",
+    "Ferrero",
+    "Pringles",
+    "Red Bull",
+    "Nestle",
+    "Mars",
+    "Snickers",
+    "Twix",
+    "Lay's",
+    "Coca-Cola",
+    "Pepsi"
   ];
 
+  const pageSize = 9;
+  const totalPages = Math.ceil(brands.length / pageSize);
+  const paginated = brands.slice((page - 1) * pageSize, page * pageSize);
+
   return (
-    <div className="min-h-screen bg-[#0b2b22] text-white">
-      {/* NAV */}
-      <div className="flex justify-between items-center p-6">
-        <div className="text-2xl font-bold tracking-widest">
-          FOMO FOOD LINES
+    <div className="min-h-screen bg-white text-gray-800">
+      {/* Header */}
+      <header className="flex items-center justify-between px-6 py-4 border-b">
+        <div className="text-xl font-bold tracking-wide">FOMO FOOD</div>
+        <div className="flex gap-4">
+          <Button variant="ghost" onClick={() => setActiveTab("brands")}>Brands</Button>
+          <Button variant="ghost" onClick={() => setActiveTab("contact")}>Contact Us</Button>
         </div>
-        <div className="flex gap-6 text-sm">
-          <button onClick={() => setActiveTab("about")}>About Us</button>
-          <button onClick={() => setActiveTab("brands")}>Brands</button>
-          <button onClick={() => setActiveTab("contact")}>Contact Us</button>
-        </div>
-      </div>
+      </header>
 
       {/* HERO */}
       {activeTab === "home" && (
-        <div className="grid md:grid-cols-2 gap-10 items-center px-10 py-10">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="space-y-6"
-          >
-            <h1 className="text-4xl font-bold">
-              We make your wishes come true.
-            </h1>
-            <p className="text-gray-200">
-              Premium FMCG distribution with global trusted brands.
-            </p>
-            <div className="grid grid-cols-3 gap-4">
-              {brands.slice(0, 6).map((b) => (
-                <div
-                  key={b}
-                  className="bg-white text-black rounded-xl p-3 text-center text-sm"
-                >
+        <div className="grid md:grid-cols-2 gap-8 items-center px-10 py-16">
+          {/* Center image placeholder */}
+          <div className="flex justify-center">
+            <div className="grid grid-cols-2 gap-4">
+              {brands.slice(0, 4).map((b) => (
+                <div key={b} className="w-28 h-28 bg-gray-100 rounded-xl flex items-center justify-center text-sm shadow">
                   {b}
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="grid grid-cols-3 gap-3"
-          >
-            {brands.map((b) => (
-              <div
-                key={b}
-                className="bg-white text-black p-2 rounded-xl text-center text-xs font-semibold"
+          {/* Right text */}
+          <div>
+            <h1 className="text-3xl font-semibold mb-6">
+              We make your wishes come true.
+            </h1>
+
+            <div className="space-y-4">
+              <button
+                className="flex items-center gap-2 text-left"
+                onClick={() => setActiveTab("about")}
               >
-                {b}
-              </div>
-            ))}
-          </motion.div>
+                <Info size={18} /> About Us
+              </button>
+
+              <button
+                className="flex items-center gap-2 text-left"
+                onClick={() => setActiveTab("brands")}
+              >
+                <Grid3X3 size={18} /> Brands
+              </button>
+
+              <button className="flex items-center gap-2 text-left">
+                <Phone size={18} /> Contact Us
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
       {/* ABOUT */}
       {activeTab === "about" && (
-        <div className="px-10 py-10 max-w-3xl">
-          <h2 className="text-3xl font-bold mb-4">About Us</h2>
-          <p className="text-gray-200 leading-relaxed">
-            With over 15 years of experience in FMCG sales across multiple
-            companies, we have closely observed the operational gaps and
-            inefficiencies that often limit performance in the industry. Drawing
-            on these insights, we established our own company to directly
-            address and eliminate those shortcomings.
-            <br />
-            <br />
-            Although our company officially began operations in 2025, our
-            long-standing expertise and accumulated know-how enable us to
-            deliver highly efficient, practical, and client-focused solutions.
-            We leverage this deep industry experience to simplify processes,
-            optimize performance, and make our clients’ operations
-            significantly easier and more effective.
+        <div className="px-10 py-16 max-w-4xl">
+          <h2 className="text-2xl font-semibold mb-4">About Us</h2>
+          <p className="leading-relaxed">
+            With over 15 years of experience in FMCG sales across multiple companies, we have closely observed the operational gaps and inefficiencies that often limit performance in the industry. Drawing on these insights, we established our own company to directly address and eliminate those shortcomings.
+            <br /><br />
+            Although our company officially began operations in 2025, our long-standing expertise and accumulated know-how enable us to deliver highly efficient, practical, and client-focused solutions. We leverage this deep industry experience to simplify processes, optimize performance, and make our clients’ operations significantly easier and more effective.
           </p>
         </div>
       )}
 
       {/* BRANDS */}
       {activeTab === "brands" && (
-        <div className="px-10 py-10">
-          <h2 className="text-3xl font-bold mb-6">Brands</h2>
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
-            {brands.map((b) => (
-              <div
-                key={b}
-                className="bg-white text-black rounded-xl p-4 text-center"
-              >
-                {b}
-              </div>
+        <div className="px-10 py-12">
+          <h2 className="text-2xl font-semibold mb-6">Brands</h2>
+
+          <div className="grid grid-cols-3 gap-4">
+            {paginated.map((b) => (
+              <Card key={b}>
+                <CardContent className="p-6 text-center font-medium">
+                  {b}
+                </CardContent>
+              </Card>
             ))}
           </div>
 
-          <div className="flex gap-2 mt-6">
-            {[1, 2, 3, 4, 5].map((p) => (
-              <button
-                key={p}
-                className="px-3 py-1 bg-white text-black rounded"
+          {/* Pagination */}
+          <div className="flex justify-center gap-2 mt-6">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <Button
+                key={i}
+                variant={page === i + 1 ? "default" : "outline"}
+                onClick={() => setPage(i + 1)}
               >
-                {p}
-              </button>
+                {i + 1}
+              </Button>
             ))}
           </div>
         </div>
       )}
 
       {/* ADVANTAGES */}
-      <div className="px-10 py-16 bg-[#0f3a2f] mt-10">
-        <h2 className="text-2xl font-bold mb-6">Our Advantages</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card>
-            <CardContent className="p-4 flex gap-3 items-center">
-              <Package /> Competitive prices
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4 flex gap-3 items-center">
-              <Package /> After sales service
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4 flex gap-3 items-center">
-              <Package /> On time delivery
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4 flex gap-3 items-center">
-              <Phone /> 24/7 support
-            </CardContent>
-          </Card>
-        </div>
-      </div>
+      <div className="px-10 py-16 bg-gray-50">
+        <h2 className="text-2xl font-semibold mb-8">Our Advantages</h2>
 
-      {/* FOOT */}
-      <div className="text-center p-6 text-xs text-gray-400">
-        © FOMO FOOD LINES
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex items-start gap-3">
+            <ShieldCheck />
+            <div>
+              <h3 className="font-medium">Competitive Prices</h3>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <Truck />
+            <div>
+              <h3 className="font-medium">On Time Delivery</h3>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <Headphones />
+            <div>
+              <h3 className="font-medium">24/7 Support</h3>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <Info />
+            <div>
+              <h3 className="font-medium">After Sales Service</h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
