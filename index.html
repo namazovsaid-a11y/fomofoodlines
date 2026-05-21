@@ -5,40 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FOMO FOOD LINES</title>
 <style>
-    body { margin: 0; font-family: 'Poppins', Arial, sans-serif; background-color: #fcfcfc; color: #333; }
-    header { padding: 20px 10%; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: center; }
-    .logo-text { font-size: 28px; font-weight: 800; color: #0b6e4f; }
-    .logo-text span { color: #c5a059; }
+    body { margin: 0; font-family: 'Poppins', Arial, sans-serif; }
     
+    /* Navbar */
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: #fff; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .logo-text { font-size: 24px; font-weight: 800; color: #0b6e4f; }
+    nav a { margin-left: 20px; text-decoration: none; color: #333; font-weight: 600; }
+    
+    /* Hero */
     .creative-hero { background: linear-gradient(135deg, #0b6e4f 0%, #053727 100%); padding: 60px 10%; text-align: center; color: white; }
-    .product-showcase-container img { max-width: 800px; width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .product-showcase-container img { max-width: 800px; width: 100%; border-radius: 20px; }
 
-    .section-title { color: #0b6e4f; text-align: center; font-size: 32px; margin: 60px 0 40px 0; }
-    .advantages-box { padding: 0 10% 60px 10%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .adv-card { background: #fff; padding: 25px; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
-    .adv-card h3 { color: #0b6e4f; margin-top: 0; }
+    /* Bu bölmələri gizlədirik, yalnız kliklədikdə görünəcək */
+    #about, #brands { display: none; padding: 60px 10%; }
+    
+    /* Görünən hissələr */
+    .section-title { color: #0b6e4f; text-align: center; margin-top: 50px; }
+    .advantages-box { padding: 40px 10%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 </style>
 </head>
 <body>
 
 <header>
     <div class="logo-text">FOMO<span>FOOD LINES</span></div>
+    <nav>
+        <a href="#" onclick="showSection('about')">About Us</a>
+        <a href="#" onclick="showSection('brands')">Brands</a>
+    </nav>
 </header>
 
 <div class="creative-hero">
     <h1>We make your wishes come true.</h1>
-    <div class="product-showcase-container">
-        <img src="hero-banner.png.jpeg" alt="Banner">
-    </div>
+    <img src="hero-banner.png.png" alt="Banner" style="max-width:800px; width:100%; border-radius:20px;">
 </div>
+
+<div id="about"><h2>About Us</h2><p>Məlumat bura yerləşdiriləcək...</p></div>
+<div id="brands"><h2>Brands</h2><p>Brendlər siyahısı bura yerləşdiriləcək...</p></div>
 
 <h2 class="section-title">Our Advantages</h2>
 <div class="advantages-box">
-    <div class="adv-card"><h3>Competitive Prices</h3><p>We offer top market rates for all our partners.</p></div>
-    <div class="adv-card"><h3>After Sales Service</h3><p>We provide continuous monitoring and assistance.</p></div>
-    <div class="adv-card"><h3>On Time Delivery</h3><p>Strict logistical tracking to ensure zero delays.</p></div>
-    <div class="adv-card"><h3>24/7 Support</h3><p>Our team is available to help you around the clock.</p></div>
+    <div class="adv-card"><h3>Competitive Prices</h3></div>
+    <div class="adv-card"><h3>After Sales Service</h3></div>
 </div>
+
+<script>
+function showSection(id) {
+    document.getElementById(id).style.display = 'block';
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+</script>
 
 </body>
 </html>
