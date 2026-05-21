@@ -1,221 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOMO Food Lines</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOMO Food Lines</title>
 
-        body {
-            background-color: #fcfcfc;
-            color: #333;
-            scroll-behavior: smooth;
-        }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fcfcfc;
+}
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+/* NAVBAR / HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
 
-        .logo-text {
-            font-size: 24px;
-            font-weight: 800;
-            color: #1b4d3e;
-            letter-spacing: 1px;
-        }
+.logo-text {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0b6e4f;
+  letter-spacing: 1px;
+}
 
-        .logo-text span {
-            color: #c5a059;
-        }
+.logo-text span {
+  color: #c5a059;
+}
 
-        nav {
-            display: flex;
-            gap: 35px;
-        }
+nav {
+  display: flex;
+  gap: 25px;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #4a4a4a;
-            font-weight: 600;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
+nav a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 600;
+  font-size: 16px;
+}
 
-        nav a:hover {
-            color: #1b4d3e;
-        }
+nav a:hover {
+  color: #0b6e4f;
+}
 
-        .hero-section {
-            margin-top: 85px;
-            display: flex;
-            align-items: center;
-            padding: 80px 8%;
-            background-color: #f4f7f5;
-            min-height: 500px;
-            gap: 50px;
-        }
+/* HERO - GLOBALLY BRANDS TƏRZİNDƏ */
+.hero-split {
+  display: flex;
+  align-items: center;
+  background: #f4f7f5;
+  padding: 60px 10%;
+  gap: 40px;
+}
 
-        .hero-image-container {
-            flex: 1.2;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.03);
-        }
+.hero-left-grid {
+  flex: 1.2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
 
-        .hero-brand-box {
-            background: #f8f9fa;
-            border: 1px solid #eaeaea;
-            border-radius: 8px;
-            height: 110px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            transition: all 0.3s;
-        }
+.hero-brand-card {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  background: #fafafa;
+}
 
-        .hero-brand-box img {
-            max-width: 80%;
-            max-height: 50px;
-            object-fit: contain;
-            margin-bottom: 8px;
-        }
+.hero-brand-card img {
+  max-width: 80%;
+  max-height: 45px;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
 
-        .hero-brand-box span {
-            font-size: 12px;
-            font-weight: 700;
-            color: #555;
-            text-transform: uppercase;
-        }
+.hero-brand-card span {
+  font-size: 11px;
+  font-weight: 700;
+  color: #666;
+  text-transform: uppercase;
+}
 
-        .hero-text-container {
-            flex: 0.8;
-        }
+.hero-right-text {
+  flex: 0.8;
+}
 
-        .hero-text-container h1 {
-            font-size: 46px;
-            color: #1b4d3e;
-            line-height: 1.3;
-            font-weight: 700;
-        }
+.hero-right-text h1 {
+  font-size: 42px;
+  color: #0b6e4f;
+  line-height: 1.3;
+  margin: 0;
+}
 
-        .container {
-            padding: 90px 8%;
-        }
+/* SECTION */
+section {
+  padding: 60px 10%;
+}
 
-        .section-title {
-            font-size: 32px;
-            color: #1b4d3e;
-            margin-bottom: 35px;
-            position: relative;
-            padding-bottom: 10px;
-        }
+h2 {
+  color: #0b6e4f;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 50px;
-            height: 3px;
-            background-color: #c5a059;
-        }
+/* BRANDS - 3 SIRA (3x2 GRID) */
+.brands-display-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  min-height: 280px;
+}
 
-        .about-text {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #444;
-            text-align: justify;
-        }
+.main-brand-item {
+  background: #ffffff;
+  border: 1px solid #eee;
+  padding: 25px 15px;
+  text-align: center;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.01);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
 
-        .brands-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            min-height: 360px;
-        }
+.main-brand-item img {
+  max-width: 65%;
+  height: 50px;
+  object-fit: contain;
+}
 
-        .main-brand-card {
-            background: #ffffff;
-            border: 1px solid #eee;
-            padding: 30px 20px;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
+.main-brand-item h4 {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
 
-        .main-brand-card img {
-            max-width: 65%;
-            height: 60px;
-            object-fit: contain;
-        }
+/* PAGINATION */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 35px;
+}
 
-        .main-brand-card h4 {
-            font-size: 18px;
-            color: #333;
-            font-weight: 600;
-        }
+.page-btn {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #0b6e4f;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 45px;
-        }
+.page-btn.active, .page-btn:hover {
+  background: #0b6e4f;
+  color: #fff;
+  border-color: #0b6e4f;
+}
 
-        .page-item {
-            padding: 10px 20px;
-            border: 1px solid #ddd;
-            background: #fff;
-            color: #1b4d3e;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+/* ADVANTAGES WINDOW */
+.advantages-box {
+  background: linear-gradient(135deg, #074733 0%, #0b6e4f 100%);
+  border-radius: 12px;
+  padding: 45px;
+  color: white;
+  box-shadow: 0 8px 20px rgba(11, 110, 79, 0.15);
+}
 
-        .page-item.active, .page-item:hover {
-            background: #1b4d3e;
-            color: #fff;
-            border-color: #1b4d3e;
-        }
+.advantages-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 50px;
+}
 
-        .advantages-panel {
-            background: linear-gradient(135deg, #11382c 0%, #1b4d3e 100%);
-            border-radius: 16px;
-            padding: 60px;
-            color: #ffffff;
-            box-shadow: 0 10px 30px rgba(27, 77, 62, 0.15);
-            margin-top: 10px;
+.adv-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.adv-icon-sphere {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.adv-icon-sphere svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+
+.adv-card h3 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* CONTACT */
+.contact {
+  text-align: center;
+  font-size: 18px;
+  background: #f4f7f5;
+}
+
+.contact a {
+  color: #0b6e4f;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+@media (max-width: 768px) {
+  .hero-split, .advantages-layout, .brands-display-grid {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <a href="#" class="logo-area">
+    <svg width="35" height="35" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="45" fill="#0b6e4f"/>
+      <path d="M35 30 H65 V42 H47 V52 H62 V62 H47 V75 H35 Z" fill="#ffffff"/>
+      <circle cx="72" cy="70" r="7" fill="#c5a059"/>
+    </svg>
+    <div class="logo-text">FOMO<span>FOOD</span></div>
+  </a>
+  <nav>
+    <a href="#about">About Us</a>
+    <a href="#brands">Brands</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+</header>
+
+<div class="hero-split">
+  <div class="hero-image-container left-grid">
+    <div class="hero-brand-card">
+      <img src="https://logo.clearbit.com/toblerone.ch" alt="Toblerone">
+      <span>Toblerone</span>
+    </div>
+    <div class="hero-brand-card">
+      <img src="https://logo.clearbit.com/kinder.com" alt="Kinder">
+      <span>Kinder</span>
+    </div>
+    <div class="hero-brand-card">
+      <img src="https://logo.clearbit.com/nescafe.com" alt="Nescafe">
+      <span>Nescafe</span>
+    </div>
+    <div class="hero-brand-card">
+      <img src="https://logo.clearbit.com/nespresso.com" alt="Nespresso">
+      <span>Nespresso</span>
+    </div>
+    <div class="hero-brand-card">
+      <img src="https://logo.clearbit.com/haribo.com" alt="Haribo">
+      <span>Haribo</span>
+    </div>
+    <div class="hero-brand-card" style="border-style: dashed; background: #fff;">
+      <span style="color: #0b6e4f;">& More</span>
+    </div>
+  </div>
+  <div class="hero-right-text">
+    <h1>We make your wishes come true.</h1>
+  </div>
+</div>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p style="line-height: 1.8; font-size: 16px; color: #444; text-align: justify;">
+    With over 15 years of experience in FMCG sales across multiple companies, we have closely observed the operational gaps and inefficiencies that often limit performance in the industry. Drawing on these insights, we established our own company to directly address and eliminate those shortcomings.
+    <br><br>
+    Although our company officially began operations in 2025, our long-standing expertise and accumulated know-how enable us to deliver highly efficient, practical, and client-focused solutions. We leverage this deep industry experience to simplify processes, optimize performance, and make our clients’ operations significantly easier and more effective.
+  </p>
+</section>
+
+<section id="brands" style="background-color: #fafafa;">
+  <h2>Brands</h2>
+  <div class="brands-display-grid" id="brandsContainer">
+    </div>
+  
+  <div class="pagination-container">
+    <button class="page-btn active" onclick="loadBrandsPage(1)">1</button>
+    <button class="page-btn" onclick="loadBrandsPage(2)">2</button>
+    <button class="page-btn" onclick="loadBrandsPage(3)">3</button>
+    <button class="page-btn" onclick="loadBrandsPage(4)">4</button>
+    <button class="page-btn" onclick="loadBrandsPage(5)">5</button>
+  </div>
+</section>
+
+<section>
+  <h2>Our Advantages</h2>
+  <div class="advantages-box">
+    <div class="advantages-layout">
+      <div class="adv-card">
+        <div class="adv-icon-sphere">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+        </div>
+        <h3>Competitive Prices</h3>
+      </div>
+      <div class="adv-card">
+        <div class="adv-icon-sphere">
+          <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1-1.5-1s-1.5.17-1.5 1v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+        </div>
+        <h3>After Sales Service</h3>
+      </div>
+      <div class="adv-card">
+        <div class="adv-icon-sphere">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        </div>
+        <h3>On Time Delivery</h3>
+      </div>
+      <div class="adv-card">
+        <div class="adv-icon-sphere">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/></svg>
+        </div>
+        <h3>24/7 Support</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <p><a href="mailto:info@fomofoodlines.com">info@fomofoodlines.com</a></p>
+</section>
+
+<footer>
+  © 2026 FOMO Food Lines
+</footer>
+
+<script>
+const allPagesBrands = {
+  1: [
+    { name: "Nutella", img: "https://logo.clearbit.com/nutella.com" },
+    { name: "Nescafe", img: "https://logo.clearbit.com/nescafe.com" },
+    { name: "Kinder", img: "https://logo.clearbit.com/kinder.com" },
+    { name: "Haribo", img: "https://logo.clearbit.com/haribo.com" },
+    { name: "Coca Cola", img: "https://logo.clearbit.com/cocacola.com" },
+    { name: "Nespresso", img: "https://logo.clearbit.com/nespresso.com" }
+  ],
+  2: [
+    { name: "Mars", img: "https://logo.clearbit.com/mars.com" },
+    { name: "Snickers", img: "https://logo.clearbit.com/snickers.com" },
+    { name: "Twix", img: "https://logo.clearbit.com/twix.com" },
+    { name: "Toblerone", img: "https://logo.clearbit.com/toblerone.ch" },
+    { name: "Ferrero Rocher", img: "https://logo.clearbit.com/ferrero.com" },
+    { name: "Milka", img: "https://logo.clearbit.com/milka.com" }
+  ],
+  3: [
+    { name: "Red Bull", img: "https://logo.clearbit.com/redbull.com" },
+    { name: "Oreo", img: "https://logo.clearbit.com/oreo.com" },
+    { name: "Pringles", img: "https://logo.clearbit.com/pringles.com" },
+    { name: "Lays", img: "https://logo.clearbit.com/lays.com" },
+    { name: "Doritos", img: "https://logo.clearbit.com/doritos.com" },
+    { name: "Bounty", img: "https://logo.clearbit.com/bounty.com" }
+  ],
+  4: [
+    { name: "Jacobs", img: "https://logo.clearbit.com/jacobs.com" },
+    { name: "Lipton", img: "https://logo.clearbit.com/lipton.com" },
+    { name: "Kellogg's", img: "https://logo.clearbit.com/kelloggs.com" },
+    { name: "Chupa Chups", img: "https://logo.clearbit.com/chupachups.com" },
+    { name: "M&M's", img: "https://logo.clearbit.com/mms.com" },
+    { name: "Ritter Sport", img: "https://logo.clearbit.com/ritter-sport.de" }
+  ],
+  5: [
+    { name: "Heineken", img: "https://logo.clearbit.com/heineken.com" },
+    { name: "Evian", img: "https://logo.clearbit.com/evian.com" },
+    { name: "Perrier", img: "https://logo.clearbit.com/perrier.com" },
+    { name: "Alpro", img: "https://logo.clearbit.com/alpro.com" },
+    { name: "Mentos", img: "https://logo.clearbit.com/mentos.com" },
+    { name: "Skittles", img: "https://logo.clearbit.com/skittles.com" }
+  ]
+};
+
+function loadBrandsPage(pNum) {
+  const container = document.getElementById("brandsContainer");
+  if(!container) return;
+  container.innerHTML = "";
+
+  allPagesBrands[pNum].forEach(b => {
+    const bDiv = document.createElement("div");
+    bDiv.className = "main-brand-item";
+    bDiv.innerHTML = `
+      <img src="${b.img}" alt="${b.name}" onerror="this.src='https://via.placeholder.com/150?text=${b.name}'">
+      <h4>${b.name}</h4>
+    `;
+    container.appendChild(bDiv);
+  });
+
+  const btns = document.querySelectorAll(".page-btn");
+  btns.forEach((btn, idx) => {
+    if (idx === pNum - 1) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  loadBrandsPage(1);
+});
+</script>
+
+</body>
+</html>
