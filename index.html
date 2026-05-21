@@ -1,181 +1,162 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FOMO Food Lines</title>
-<style>
-body { margin: 0; font-family: Arial, sans-serif; background-color: #ffffff; scroll-behavior: smooth; }
-header { padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; background: #ffffff; border-bottom: 1px solid #eeeeee; position: fixed; width: 80%; top: 0; z-index: 1000; }
-.logo { font-size: 24px; font-weight: bold; color: #0b6e4f; text-decoration: none; }
-.logo span { color: #c5a059; }
-nav a { margin-left: 20px; text-decoration: none; color: #333333; font-weight: bold; }
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Info, Package, Phone } from "lucide-react";
 
-/* HERO SECTION */
-.hero-container { display: flex; background: #f4f7f5; padding: 120px 10% 50px 10%; align-items: center; }
-.hero-left { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-.hero-box { background: #0b6e4f; color: white; padding: 20px 10px; text-align: center; border-radius: 5px; font-weight: bold; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.hero-box.more { background: #ffffff; color: #0b6e4f; border: 2px dashed #0b6e4f; }
-.hero-right { flex: 1; padding-left: 50px; }
-.hero-right h1 { font-size: 38px; color: #0b6e4f; margin: 0; }
+export default function FomoFoodLanding() {
+  const [activeTab, setActiveTab] = useState("home");
 
-/* SECTIONS */
-section { padding: 80px 10% 40px 10%; }
-h2 { color: #0b6e4f; font-size: 28px; margin-bottom: 20px; }
+  const brands = [
+    "Kinder",
+    "Nutella",
+    "Nescafe",
+    "Nespresso",
+    "Haribo",
+    "Toblerone",
+    "Freego",
+    "Lindt",
+    "Monster",
+  ];
 
-/* BRANDS */
-.brand-section-block { margin-bottom: 50px; }
-.brand-page-title { font-size: 14px; color: #c5a059; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
-.brands-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
-.brand-card { background: #ffffff; border: 1px solid #eeeeee; padding: 30px 15px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.brand-card .brand-logo-fallback { width: 50px; height: 50px; background: #f4f7f5; color: #0b6e4f; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; margin-bottom: 12px; border: 1px solid #e1e8e4; }
-.brand-card h4 { margin: 0; color: #333333; font-size: 16px; font-weight: bold; }
+  return (
+    <div className="min-h-screen bg-[#0b2b22] text-white">
+      {/* NAV */}
+      <div className="flex justify-between items-center p-6">
+        <div className="text-2xl font-bold tracking-widest">
+          FOMO FOOD LINES
+        </div>
+        <div className="flex gap-6 text-sm">
+          <button onClick={() => setActiveTab("about")}>About Us</button>
+          <button onClick={() => setActiveTab("brands")}>Brands</button>
+          <button onClick={() => setActiveTab("contact")}>Contact Us</button>
+        </div>
+      </div>
 
-/* NAVIGATION FOR PAGES */
-.pages-nav { text-align: center; margin-bottom: 30px; background: #ffffff; padding: 12px; border-radius: 6px; border: 1px solid #eaeaea; }
-.page-link { display: inline-block; padding: 8px 16px; margin: 0 5px; border: 1px solid #0b6e4f; color: #0b6e4f; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.2s; }
-.page-link:hover { background: #0b6e4f; color: white; }
+      {/* HERO */}
+      {activeTab === "home" && (
+        <div className="grid md:grid-cols-2 gap-10 items-center px-10 py-10">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="space-y-6"
+          >
+            <h1 className="text-4xl font-bold">
+              We make your wishes come true.
+            </h1>
+            <p className="text-gray-200">
+              Premium FMCG distribution with global trusted brands.
+            </p>
+            <div className="grid grid-cols-3 gap-4">
+              {brands.slice(0, 6).map((b) => (
+                <div
+                  key={b}
+                  className="bg-white text-black rounded-xl p-3 text-center text-sm"
+                >
+                  {b}
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
-/* ADVANTAGES */
-.adv-window { background: #0b6e4f; color: white; padding: 40px; border-radius: 10px; }
-.adv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-.adv-item { font-size: 20px; font-weight: bold; }
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="grid grid-cols-3 gap-3"
+          >
+            {brands.map((b) => (
+              <div
+                key={b}
+                className="bg-white text-black p-2 rounded-xl text-center text-xs font-semibold"
+              >
+                {b}
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      )}
 
-/* CONTACT */
-.contact-box { text-align: center; font-size: 22px; }
-.contact-box a { color: #0b6e4f; text-decoration: none; font-weight: bold; }
-footer { background: #111111; color: white; text-align: center; padding: 20px; font-size: 14px; }
+      {/* ABOUT */}
+      {activeTab === "about" && (
+        <div className="px-10 py-10 max-w-3xl">
+          <h2 className="text-3xl font-bold mb-4">About Us</h2>
+          <p className="text-gray-200 leading-relaxed">
+            With over 15 years of experience in FMCG sales across multiple
+            companies, we have closely observed the operational gaps and
+            inefficiencies that often limit performance in the industry. Drawing
+            on these insights, we established our own company to directly
+            address and eliminate those shortcomings.
+            <br />
+            <br />
+            Although our company officially began operations in 2025, our
+            long-standing expertise and accumulated know-how enable us to
+            deliver highly efficient, practical, and client-focused solutions.
+            We leverage this deep industry experience to simplify processes,
+            optimize performance, and make our clients’ operations
+            significantly easier and more effective.
+          </p>
+        </div>
+      )}
 
-@media (max-width: 768px) { .hero-container, .adv-grid, .brands-grid { grid-template-columns: 1fr; flex-direction: column; } .hero-right { padding-left: 0; margin-top: 20px; } header { width: 100%; position: relative; padding: 15px 5%; } .hero-container { padding-top: 20px; } }
-</style>
-</head>
-<body>
+      {/* BRANDS */}
+      {activeTab === "brands" && (
+        <div className="px-10 py-10">
+          <h2 className="text-3xl font-bold mb-6">Brands</h2>
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
+            {brands.map((b) => (
+              <div
+                key={b}
+                className="bg-white text-black rounded-xl p-4 text-center"
+              >
+                {b}
+              </div>
+            ))}
+          </div>
 
-<header>
-  <a href="#" class="logo">FOMO <span>FOOD</span></a>
-  <nav>
-    <a href="#about">About Us</a>
-    <a href="#brands">Brands</a>
-    <a href="#contact">Contact Us</a>
-  </nav>
-</header>
+          <div className="flex gap-2 mt-6">
+            {[1, 2, 3, 4, 5].map((p) => (
+              <button
+                key={p}
+                className="px-3 py-1 bg-white text-black rounded"
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
-<div class="hero-container">
-  <div class="hero-left">
-    <div class="hero-box">Toblerone</div>
-    <div class="hero-box">Kinder</div>
-    <div class="hero-box">Nescafe</div>
-    <div class="hero-box">Nespresso</div>
-    <div class="hero-box">Haribo</div>
-    <div class="hero-box more">& More</div>
-  </div>
-  <div class="hero-right">
-    <h1>We make your wishes come true.</h1>
-  </div>
-</div>
+      {/* ADVANTAGES */}
+      <div className="px-10 py-16 bg-[#0f3a2f] mt-10">
+        <h2 className="text-2xl font-bold mb-6">Our Advantages</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <Card>
+            <CardContent className="p-4 flex gap-3 items-center">
+              <Package /> Competitive prices
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4 flex gap-3 items-center">
+              <Package /> After sales service
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4 flex gap-3 items-center">
+              <Package /> On time delivery
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4 flex gap-3 items-center">
+              <Phone /> 24/7 support
+            </CardContent>
+          </Card>
+        </div>
+      </div>
 
-<section id="about">
-  <h2>About Us</h2>
-  <p style="line-height: 1.6; font-size: 16px; color: #444;">
-    With over 15 years of experience in FMCG sales across multiple companies, we have closely observed the operational gaps and inefficiencies that often limit performance in the industry. Drawing on these insights, we established our own company to directly address and eliminate those shortcomings.
-    <br><br>
-    Although our company officially began operations in 2025, our long-standing expertise and accumulated know-how enable us to deliver highly efficient, practical, and client-focused solutions. We leverage this deep industry experience to simplify processes, optimize performance, and make our clients’ operations significantly easier and more effective.
-  </p>
-</section>
-
-<section id="brands" style="background: #fafafa;">
-  <h2>Brands</h2>
-  
-  <div class="pages-nav">
-    <a href="#page1" class="page-link">Page 1</a>
-    <a href="#page2" class="page-link">Page 2</a>
-    <a href="#page3" class="page-link">Page 3</a>
-    <a href="#page4" class="page-link">Page 4</a>
-    <a href="#page5" class="page-link">Page 5</a>
-  </div>
-
-  <div id="page1" class="brand-section-block">
-    <div class="brand-page-title">Page 1</div>
-    <div class="brands-grid">
-      <div class="brand-card"><div class="brand-logo-fallback">N</div><h4>Nutella</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">N</div><h4>Nescafe</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">K</div><h4>Kinder</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">H</div><h4>Haribo</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">C</div><h4>Coca Cola</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">N</div><h4>Nespresso</h4></div>
+      {/* FOOT */}
+      <div className="text-center p-6 text-xs text-gray-400">
+        © FOMO FOOD LINES
+      </div>
     </div>
-  </div>
-
-  <div id="page2" class="brand-section-block">
-    <div class="brand-page-title">Page 2</div>
-    <div class="brands-grid">
-      <div class="brand-card"><div class="brand-logo-fallback">M</div><h4>Mars</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">S</div><h4>Snickers</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">T</div><h4>Twix</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">T</div><h4>Toblerone</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">F</div><h4>Ferrero Rocher</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">M</div><h4>Milka</h4></div>
-    </div>
-  </div>
-
-  <div id="page3" class="brand-section-block">
-    <div class="brand-page-title">Page 3</div>
-    <div class="brands-grid">
-      <div class="brand-card"><div class="brand-logo-fallback">R</div><h4>Red Bull</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">O</div><h4>Oreo</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">P</div><h4>Pringles</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">L</div><h4>Lays</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">D</div><h4>Doritos</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">B</div><h4>Bounty</h4></div>
-    </div>
-  </div>
-
-  <div id="page4" class="brand-section-block">
-    <div class="brand-page-title">Page 4</div>
-    <div class="brands-grid">
-      <div class="brand-card"><div class="brand-logo-fallback">J</div><h4>Jacobs</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">L</div><h4>Lipton</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">K</div><h4>Kellogg's</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">C</div><h4>Chupa Chups</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">M</div><h4>M&M's</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">R</div><h4>Ritter Sport</h4></div>
-    </div>
-  </div>
-
-  <div id="page5" class="brand-section-block">
-    <div class="brand-page-title">Page 5</div>
-    <div class="brands-grid">
-      <div class="brand-card"><div class="brand-logo-fallback">H</div><h4>Heineken</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">E</div><h4>Evian</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">P</div><h4>Perrier</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">A</div><h4>Alpro</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">M</div><h4>Mentos</h4></div>
-      <div class="brand-card"><div class="brand-logo-fallback">S</div><h4>Skittles</h4></div>
-    </div>
-  </div>
-
-</section>
-
-<section>
-  <h2>Our Advantages</h2>
-  <div class="adv-window">
-    <div class="adv-grid">
-      <div class="adv-item">✓ Competitive Prices</div>
-      <div class="adv-item">✓ After Sales Service</div>
-      <div class="adv-item">✓ On Time Delivery</div>
-      <div class="adv-item">✓ 24/7 Support</div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact-box">
-  <h2>Contact Us</h2>
-  <p><a href="mailto:info@fomofoodlines.com">info@fomofoodlines.com</a></p>
-</section>
-
-<footer>
-  © 2026 FOMO Food Lines
-</footer>
-
-</body>
-</html>
+  );
+}
