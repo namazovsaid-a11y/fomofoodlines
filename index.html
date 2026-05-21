@@ -10,159 +10,40 @@ header { padding: 20px 10%; display: flex; justify-content: space-between; align
 .logo { font-size: 24px; font-weight: bold; color: #0b6e4f; text-decoration: none; }
 .logo span { color: #c5a059; }
 nav a { margin-left: 20px; text-decoration: none; color: #333333; font-weight: bold; }
+
+/* HERO SECTION */
 .hero-container { display: flex; background: #f4f7f5; padding: 120px 10% 50px 10%; align-items: center; }
 .hero-left { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-.hero-box { background: white; border: 1px solid #dddddd; padding: 15px; text-align: center; border-radius: 5px; }
-.hero-box img { max-width: 80px; height: auto; }
+.hero-box { background: #0b6e4f; color: white; padding: 20px 10px; text-align: center; border-radius: 5px; font-weight: bold; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.hero-box.more { background: #ffffff; color: #0b6e4f; border: 2px dashed #0b6e4f; }
 .hero-right { flex: 1; padding-left: 50px; }
-.hero-right h1 { font-size: 38px; color: #0b6e4f; }
+.hero-right h1 { font-size: 38px; color: #0b6e4f; margin: 0; }
+
+/* SECTIONS */
 section { padding: 80px 10% 40px 10%; }
 h2 { color: #0b6e4f; font-size: 28px; margin-bottom: 20px; }
+
+/* BRANDS */
 .brand-section-block { margin-bottom: 50px; }
-.brand-page-title { font-size: 14px; color: #c5a059; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
+.brand-page-title { font-size: 14px; color: #c5a059; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
 .brands-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
-.brand-card { background: #ffffff; border: 1px solid #eeeeee; padding: 20px; border-radius: 5px; }
-.brand-card img { max-width: 90px; height: 40px; object-fit: contain; }
-.brand-card h4 { margin: 10px 0 0 0; color: #333; }
-.pages-nav { text-align: center; margin-bottom: 25px; background: #ffffff; padding: 10px; border-radius: 5px; border: 1px solid #eaeaea; }
-.page-link { display: inline-block; padding: 8px 16px; margin: 0 5px; border: 1px solid #0b6e4f; color: #0b6e4f; text-decoration: none; border-radius: 4px; font-weight: bold; }
+.brand-card { background: #ffffff; border: 1px solid #eeeeee; padding: 30px 15px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.brand-card .brand-logo-fallback { width: 50px; height: 50px; background: #f4f7f5; color: #0b6e4f; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px; margin-bottom: 12px; border: 1px solid #e1e8e4; }
+.brand-card h4 { margin: 0; color: #333333; font-size: 16px; font-weight: bold; }
+
+/* NAVIGATION FOR PAGES */
+.pages-nav { text-align: center; margin-bottom: 30px; background: #ffffff; padding: 12px; border-radius: 6px; border: 1px solid #eaeaea; }
+.page-link { display: inline-block; padding: 8px 16px; margin: 0 5px; border: 1px solid #0b6e4f; color: #0b6e4f; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.2s; }
 .page-link:hover { background: #0b6e4f; color: white; }
+
+/* ADVANTAGES */
 .adv-window { background: #0b6e4f; color: white; padding: 40px; border-radius: 10px; }
 .adv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 .adv-item { font-size: 20px; font-weight: bold; }
+
+/* CONTACT */
 .contact-box { text-align: center; font-size: 22px; }
 .contact-box a { color: #0b6e4f; text-decoration: none; font-weight: bold; }
 footer { background: #111111; color: white; text-align: center; padding: 20px; font-size: 14px; }
-@media (max-width: 768px) { .hero-container, .adv-grid, .brands-grid { grid-template-columns: 1fr; flex-direction: column; } .hero-right { padding-left: 0; margin-top: 20px; } header { width: 100%; position: relative; padding: 15px 5%; } .hero-container { padding-top: 20px; } }
-</style>
-</head>
-<body>
 
-<header>
-  <a href="#" class="logo">FOMO <span>FOOD</span></a>
-  <nav>
-    <a href="#about">About Us</a>
-    <a href="#brands">Brands</a>
-    <a href="#contact">Contact Us</a>
-  </nav>
-</header>
-
-<div class="hero-container">
-  <div class="hero-left">
-    <div class="hero-box"><img src="https://logo.clearbit.com/toblerone.ch" alt="Toblerone"></div>
-    <div class="hero-box"><img src="https://logo.clearbit.com/kinder.com" alt="Kinder"></div>
-    <div class="hero-box"><img src="https://logo.clearbit.com/nescafe.com" alt="Nescafe"></div>
-    <div class="hero-box"><img src="https://logo.clearbit.com/nespresso.com" alt="Nespresso"></div>
-    <div class="hero-box"><img src="https://logo.clearbit.com/haribo.com" alt="Haribo"></div>
-    <div class="hero-box" style="display:flex; align-items:center; justify-content:center; font-weight:bold; color:#0b6e4f;">& More</div>
-  </div>
-  <div class="hero-right">
-    <h1>We make your wishes come true.</h1>
-  </div>
-</div>
-
-<section id="about">
-  <h2>About Us</h2>
-  <p style="line-height: 1.6; font-size: 16px; color: #444;">
-    With over 15 years of experience in FMCG sales across multiple companies, we have closely observed the operational gaps and inefficiencies that often limit performance in the industry. Drawing on these insights, we established our own company to directly address and eliminate those shortcomings.
-    <br><br>
-    Although our company officially began operations in 2025, our long-standing expertise and accumulated know-how enable us to deliver highly efficient, practical, and client-focused solutions. We leverage this deep industry experience to simplify processes, optimize performance, and make our clients’ operations significantly easier and more effective.
-  </p>
-</section>
-
-<section id="brands" style="background: #fafafa;">
-  <h2>Brands</h2>
-  
-  <div class="pages-nav">
-    <a href="#page1" class="page-link">Page 1</a>
-    <a href="#page2" class="page-link">Page 2</a>
-    <a href="#page3" class="page-link">Page 3</a>
-    <a href="#page4" class="page-link">Page 4</a>
-    <a href="#page5" class="page-link">Page 5</a>
-  </div>
-
-  <div id="page1" class="brand-section-block">
-    <div class="brand-page-title">Page 1</div>
-    <div class="brands-grid">
-      <div class="brand-card"><img src="https://logo.clearbit.com/nutella.com"><h4>Nutella</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/nescafe.com"><h4>Nescafe</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/kinder.com"><h4>Kinder</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/haribo.com"><h4>Haribo</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/cocacola.com"><h4>Coca Cola</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/nespresso.com"><h4>Nespresso</h4></div>
-    </div>
-  </div>
-
-  <div id="page2" class="brand-section-block">
-    <div class="brand-page-title">Page 2</div>
-    <div class="brands-grid">
-      <div class="brand-card"><img src="https://logo.clearbit.com/mars.com"><h4>Mars</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/snickers.com"><h4>Snickers</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/twix.com"><h4>Twix</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/toblerone.ch"><h4>Toblerone</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/ferrero.com"><h4>Ferrero Rocher</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/milka.com"><h4>Milka</h4></div>
-    </div>
-  </div>
-
-  <div id="page3" class="brand-section-block">
-    <div class="brand-page-title">Page 3</div>
-    <div class="brands-grid">
-      <div class="brand-card"><img src="https://logo.clearbit.com/redbull.com"><h4>Red Bull</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/oreo.com"><h4>Oreo</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/pringles.com"><h4>Pringles</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/lays.com"><h4>Lays</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/doritos.com"><h4>Doritos</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/bounty.com"><h4>Bounty</h4></div>
-    </div>
-  </div>
-
-  <div id="page4" class="brand-section-block">
-    <div class="brand-page-title">Page 4</div>
-    <div class="brands-grid">
-      <div class="brand-card"><img src="https://logo.clearbit.com/jacobs.com"><h4>Jacobs</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/lipton.com"><h4>Lipton</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/kelloggs.com"><h4>Kellogg's</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/chupachups.com"><h4>Chupa Chups</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/mms.com"><h4>M&M's</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/ritter-sport.de"><h4>Ritter Sport</h4></div>
-    </div>
-  </div>
-
-  <div id="page5" class="brand-section-block">
-    <div class="brand-page-title">Page 5</div>
-    <div class="brands-grid">
-      <div class="brand-card"><img src="https://logo.clearbit.com/heineken.com"><h4>Heineken</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/evian.com"><h4>Evian</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/perrier.com"><h4>Perrier</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/alpro.com"><h4>Alpro</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/mentos.com"><h4>Mentos</h4></div>
-      <div class="brand-card"><img src="https://logo.clearbit.com/skittles.com"><h4>Skittles</h4></div>
-    </div>
-  </div>
-
-</section>
-
-<section>
-  <h2>Our Advantages</h2>
-  <div class="adv-window">
-    <div class="adv-grid">
-      <div class="adv-item">✓ Competitive Prices</div>
-      <div class="adv-item">✓ After Sales Service</div>
-      <div class="adv-item">✓ On Time Delivery</div>
-      <div class="adv-item">✓ 24/7 Support</div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact-box">
-  <h2>Contact Us</h2>
-  <p><a href="mailto:info@fomofoodlines.com">info@fomofoodlines.com</a></p>
-</section>
-
-<footer>
-  © 2026 FOMO Food Lines
-</footer>
-
-</body>
-</html>
+@media (max-width: 768px) { .hero-container, .adv-grid, .brands-grid { grid-template-columns: 1fr; flex-direction: column; } .hero-right { padding-left: 0; margin-top: 20px; } header { width: 100%; position: relative
